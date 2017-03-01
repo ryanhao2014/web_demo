@@ -97,3 +97,8 @@ CSS中的定位机制：普通流，浮动，绝对定位 （其中"position:fix
 缺点：复用方式不当会造成代码量增加
 
 #### [浮动详解（float）](http://www.iyunlu.com/view/css-xhtml/55.html)
+
+#### [BFC（Block Formatting Context）](http://www.cnblogs.com/pigtail/archive/2013/01/23/2871627.html)直译为“块级格式化范围”
+了解grid flexbox
+
+
