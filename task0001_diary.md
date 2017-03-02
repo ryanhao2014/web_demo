@@ -59,9 +59,8 @@ Inherits this property from its parent element. Read about inherit.
 
 * 实现背景红色宽度960px的`<div>`在浏览器居中
 
-** `<body style="text-algin:center;">`以及在子`<div>`块中设置`margin:0 auto;`此种情况下为左右居中
-
-** `{width: 960px;height: 60px;position: absolute;left:50%;top:50%;margin-left: -480px;margin-top: -30px;}`其中`margin-left` 和`margin-top`的数值应该为width和height的一半。
+`<body style="text-algin:center;">`以及在子`<div>`块中设置`margin:0 auto;`此种情况下为左右居中
+`{width: 960px;height: 60px;position: absolute;left:50%;top:50%;margin-left: -480px;margin-top: -30px;}`其中`margin-left` 和`margin-top`的数值应该为width和height的一半。
 
 * 不用border属性，纯css+div制作圆角矩形
 > 原理是用8个高度、宽度很小的div块放在上下四角，并且这些div块相互并列，在最外面还有一个div块作为边框包含住这些小的div块，这些小的div块呈白色,其他背景、边框呈黑色，这样看起来矩形的四角就好像圆了。
@@ -100,5 +99,24 @@ CSS中的定位机制：普通流，浮动，绝对定位 （其中"position:fix
 
 #### [BFC（Block Formatting Context）](http://www.cnblogs.com/pigtail/archive/2013/01/23/2871627.html)直译为“块级格式化范围”
 了解grid flexbox
+> #### 如何产生BFC：当一个HTML元素满足下面条件的任何一点，都可以产生Block Formatting Context：
+* float的值不为none。
+* overflow的值不为visible。
+* display的值为table-cell, table-caption, inline-block中的任何一个。
+* position的值不为relative和static。
 
-
+## Question
+ * 1.对header设置css样式时 `.header{}`不起作用
+ * 2.不清楚float属性在`ul`以及`li`中的适当使用
+ * 3.在设置好ul 以及li 属性后，发现ul产生的无序列表无法被header contain。即无序列表浮动在外。 即闭合浮动问题。
+ * 4.task_0001 index页，页面中content内容3个div块并列居中（浮动）效果实现较差以及费时间较长。
+ * 5.footer浮动在content内容之上
+ 
+## Solution
+* 1.在`<header>`中引入`<header class="header">`，css样式出现
+* 2.只在li 属性中设置float 属性。
+* 3. 解决方法1：为headr 设置weight 属性。 解决方法2：根据所需高度在浮动末尾加上相应数量的<br>。解决方法3：在浮动末尾加上一个清除浮动的div块 如`<div style="clear:both;></div>` 
+解决方法4：  *推荐* 使用after伪元素 `.clearfix:after{content: ".";display: block;height: 0;clear:both;visibility:hidden;}
+.clearfix { *zoom:1; }` 用一个`<div class="clearfix">`去contain浮动的范围。
+* 4.方法1：直接在第一个div块中设置margin-left数值 之后其他2个div块按顺序浮动即可。 方法2：（能否让3个块自动居中呢？）
+* 5.需要设置margin-top属性（？）
