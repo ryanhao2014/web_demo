@@ -120,3 +120,10 @@ CSS中的定位机制：普通流，浮动，绝对定位 （其中"position:fix
 .clearfix { *zoom:1; }` 用一个`<div class="clearfix">`去contain浮动的范围。
 * 4.方法1：直接在第一个div块中设置margin-left数值 之后其他2个div块按顺序浮动即可。 方法2：（能否让3个块自动居中呢？）
 * 5.需要设置margin-top属性（？）
+#### something need to know
+<!DOCTYPE> 声明不是 HTML 标签；它是指示 web 浏览器关于页面使用哪个 HTML 版本进行编写的指令。
+> 注释：<!DOCTYPE> 声明没有结束标签。
+提示：<!DOCTYPE> 声明对大小写不敏感。
+提示：请使用 W3C 的验证器来检查您是否编写了有效的 HTML / XHTML 文档！
+#### HTML 5
+`<!DOCTYPE html>`
