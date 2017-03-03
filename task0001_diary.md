@@ -111,6 +111,8 @@ CSS中的定位机制：普通流，浮动，绝对定位 （其中"position:fix
  * 3.在设置好ul 以及li 属性后，发现ul产生的无序列表无法被header contain。即无序列表浮动在外。 即闭合浮动问题。
  * 4.task_0001 index页，页面中content内容3个div块并列居中（浮动）效果实现较差以及费时间较长。
  * 5.footer浮动在content内容之上
+ * 6.index页面很多部分在加入position:absolute后会变的一团糟。
+ * 7.为什么页面中的各块没有按照顺序朝下排列？而是互相浮动在上方。
  
 ## Solution
 * 1.在`<header>`中引入`<header class="header">`，css样式出现
@@ -120,6 +122,12 @@ CSS中的定位机制：普通流，浮动，绝对定位 （其中"position:fix
 .clearfix { *zoom:1; }` 用一个`<div class="clearfix">`去contain浮动的范围。
 * 4.方法1：直接在第一个div块中设置margin-left数值 之后其他2个div块按顺序浮动即可。 方法2：（能否让3个块自动居中呢？）
 * 5.需要设置margin-top属性（？）
+* 6.待解决（new一个页面进行不同的尝试来了解其详细属性。）
+> * absolute
+元素框从文档流完全删除，并相对于其包含块定位。包含块可能是文档中的另一个元素或者是初始包含块。元素原先在正常文档流中所占的空间会关闭，就好像元素原来不存在一样。元素定位后生成一个块级框，而不论原来它在正常流中生成何种类型的框。
+
+* 7.待解决
+
 #### something need to know
 <!DOCTYPE> 声明不是 HTML 标签；它是指示 web 浏览器关于页面使用哪个 HTML 版本进行编写的指令。
 > 注释：<!DOCTYPE> 声明没有结束标签。
@@ -127,3 +135,4 @@ CSS中的定位机制：普通流，浮动，绝对定位 （其中"position:fix
 提示：请使用 W3C 的验证器来检查您是否编写了有效的 HTML / XHTML 文档！
 #### HTML 5
 `<!DOCTYPE html>`
+
