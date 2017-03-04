@@ -128,11 +128,33 @@ CSS中的定位机制：普通流，浮动，绝对定位 （其中"position:fix
 
 * 7.待解决
 
-#### something need to know
+#### something need to know 
 <!DOCTYPE> 声明不是 HTML 标签；它是指示 web 浏览器关于页面使用哪个 HTML 版本进行编写的指令。
 > 注释：<!DOCTYPE> 声明没有结束标签。
 提示：<!DOCTYPE> 声明对大小写不敏感。
 提示：请使用 W3C 的验证器来检查您是否编写了有效的 HTML / XHTML 文档！
+
+ 
+ *dl dt dd 三级无序列表 分别为内容块 标题 内容
+ 
+ *ul li 无序列表
+ 
+ *ol 有序列表
+ 
+ > 什么是HTML语义化？
+基本上都是围绕着几个主要的标签，像标题（H1~H6）、列表（li）、强调（strong em）等等
+根据内容的结构化（内容语义化），选择合适的标签（代码语义化）便于开发者阅读和写出更优雅的代码的同时让浏览器的爬虫和机器很好地解析。
+在HTML 5出来之前，我们用div来表示页面章节，但是这些div都没有实际意义。（即使我们用css样式的id和class形容这块内容的意义）。
+这些标签只是我们提供给浏览器的指令，只是定义一个网页的某些部分。但现在，那些之前没“意义”的标签因为因为html5的出现消失了，
+这就是我们平时说的“语义”。语义标签比如`<header>``<footer>`。
+#### [为什么要语义化？写HTML代码时应注意什么？](http://www.cnblogs.com/freeyiyi1993/p/3615179.html)
+有利于SEO：和搜索引擎建立良好沟通，有助于爬虫抓取更多的有效信息：爬虫依赖于标签来确定上下文和各个关键字的权重；
+
+* 选择器（在 CSS 中，选择器是一种模式，用于选择需要添加样式的元素。）
+标签选择器 类选择器 ID选择器 子选择器等等...
+
+* [文档流](http://www.blogjava.net/huamengxing/archive/2009/10/13/298083.html)
+> 文档流是文档中可显示对象在排列时所占用的位置。比如网页的div标签它默认占用的宽度位置是一整行，p标签默认占用宽度也是一整行，因为div标签和p标签是块状对象。 网页中大部分对象默认是占用文档流，也有一些对象是不占文档流的，比如表单中隐藏域。当然我们也可以让占用文档流的元素转换成不占文档流，这就要用到CSS中属性position来控制。 看看CSS 2.0对position的定义：检索对象的定位方式。共有4种取值。 static：默认值，无特殊（静态）定位。对象遵循HTML定位规则 。 absolute：绝对定位。将对象从文档流中拖出，使用left，right，top，bottom等属性相对于其最接近的一个最有定位设置的父对象进行绝对定位。如果不存在这样的父对象，则依据body对象。而其层叠通过z-index属性定义 。当对象定位在浏览器窗口以外，浏览器因此显示滚动条。 fixed：固定定位。对象定位遵从绝对(absolute)方式。但是要遵守一些规范。当对象定位在浏览器窗口以外，浏览器不会因此显示滚动条，而当滚动条滚动时，对象始终固定在原来位置。 relative：相对定位。对象不可层叠，但将依据left，right，top，bottom等属性在正常文档流中偏移位置。当对象定位在浏览器窗口以外，浏览器因此显示滚动条。 inherit：继承值，对象将继承其父对象相应的值 
 #### HTML 5
 `<!DOCTYPE html>`
 #### A  Question
@@ -153,11 +175,20 @@ CSS中的定位机制：普通流，浮动，绝对定位 （其中"position:fix
      `</ul>`
      `</header>`
     
-    估计问题需要闭合浮动来解决。
+ 估计问题需要闭合浮动来解决。
 #### Question
 * 实现三个div块自适应且等高
  [搜索得以下答案](https://segmentfault.com/q/1010000002706883)
-> * @dolymood 的方法：为父元素设置 `overflow:hidden`。再为子元素设置大的 `padding-bottom `属性，再用稍大一点的 `margin-bottom` 属性抵消；
-  * @pantao @MockingBird 的方法采用了table布局，父元素 `display:table`，子元素 `display:table-cell;`
+> 
+* @dolymood 的方法：为父元素设置 `overflow:hidden`。再为子元素设置大的 `padding-bottom `属性，再用稍大一点的 `margin-bottom` 属性抵消；
+* @pantao @MockingBird 的方法采用了table布局，父元素 `display:table`，子元素 `display:table-cell;`
   
-  但是在采用时均无法生效。
+但是在采用时均无法生效。
+解决方法：
+> @dolymood 的方法：为父元素设置 `overflow:hidden`。再为子元素设置大的 `padding-bottom `属性，再用稍大一点的 `margin-bottom` 属性抵消；
+
+ 会错意...`margin-bottom`抵消意思是使用稍大的负值margin去抵消。
+
+ 
+ 
+ 
