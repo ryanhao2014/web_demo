@@ -135,23 +135,29 @@ CSS中的定位机制：普通流，浮动，绝对定位 （其中"position:fix
 提示：请使用 W3C 的验证器来检查您是否编写了有效的 HTML / XHTML 文档！
 #### HTML 5
 `<!DOCTYPE html>`
-#### a  Question
+#### A  Question
 * 在写banner时 我先写了一个width100% height100px的div 然后再写了一个width980px height 100px的div以margin：0 auto;的方式居中 之后分别在外面的div中和里面的div中置入菜单和logo.png 但是无法达到相应的效果，logo.png总是会浮出banner。代码如下
->  `<header>
-    	<ul>
-    <div class="banner">
-    	<div class="clearfix">
-    		 <li> <img src="src/icon-github.png" class="logo"></li>
-    		<li class="li-l">logo</li>
-    		<li><a href="">A</a></li>
-    		<li><a href="">A</a></li>
-    		<li><a href="">A</a></li>
-    		<li><a href="">A</a></li>
-
-        </div>
-    </div>
-   <li> <img src="src/icon-github.png" class="logo"></li>
-    </ul>
-    </header>`
+>  `<header>`  
+   `<ul>`
+   ` <div class="banner">`
+      `<div class="clearfix">`
+    	    `<li><img src="src/icon-github.png" class="logo"></li>`
+            `<li class="li-l">logo</li>`
+    	    `<li><a href="">A</a></li>`
+    	    `<li><a href="">A</a></li>`
+    	    `<li><a href="">A</a></li>`
+    	    `<li><a href="">A</a></li>`
+     `</div>`
+     `</div>`
+     `<li> <img src="src/icon-github.png" class="logo"></li>`
+     `</ul>`
+     `</header>`
     
-    推测问题需要闭合浮动来解决。
+    估计问题需要闭合浮动来解决。
+#### Question
+* 实现三个div块自适应且等高
+ [搜索得以下答案](https://segmentfault.com/q/1010000002706883)
+> * @dolymood 的方法：为父元素设置 `overflow:hidden`。再为子元素设置大的 `padding-bottom `属性，再用稍大一点的 `margin-bottom` 属性抵消；
+  * @pantao @MockingBird 的方法采用了table布局，父元素 `display:table`，子元素 `display:table-cell;`
+  
+  但是在采用时均无法生效。
