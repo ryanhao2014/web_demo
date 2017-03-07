@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>task0002</title>
+</head>
+
+<body>
+	<input id="number1" type="text">
+    <input id="number2" type="text">
+    <span id="result"></span>
+    <button id="addbtn"></button>
+	<script>
+       function $(id){
+           return document.getElementById(id);
+       }
+       function add(number1,number2){
+       	return number1+number2;
+       }
+       function renderResult(result){
+       	$("result").innerHTML=result;
+       }
+       function addEventHandle(){
+       	var number1=$("number1").value;
+       	var number2=$("number2").value;
+       	var result=add(number1,number2);
+       	renderResult(result);
+       }
+       function initEvent(){
+       	$("addbtn").addEventListener("click",addEventHandle,false);
+       }
+       initEvent();
+    </script>
+</body>
+</html>
