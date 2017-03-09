@@ -25,13 +25,13 @@ indexOf
 * JavaScript 中数字开头的属性不能跟在点号后面；必须在方括号中使用。比如说，如果你有一个名为 ‘3d’ 的属性，它只能通过方括号的形式进行访问。 换言之访问合法的属性名可以用"."或者"[ ]",但是访问非法的属性只能用"[ ]"
 ### 对象Object
 #### 遍历
-for..in..循环集合本身的元素以及后来添加的元素（如var a=['a','b','c'];var a.name='d'; 此时使用for..in..会遍历到a.name属性）
-for..of.. 只循环集合本身的元素
-Array.forEach(function(element,index,array){
-    // element: 指向当前元素的值
-    // index: 指向当前索引
-    // array: 指向Array对象本身
-    alert(element); });
+* for..in..循环集合本身的元素以及后来添加的元素（如var a=['a','b','c'];var a.name='d'; 此时使用for..in..会遍历到a.name属性）
+* for..of.. 只循环集合本身的元素
+* Array.forEach(function(element,index,array){
+ * // element: 指向当前元素的值
+ * // index: 指向当前索引
+ * // array: 指向Array对象本身
+ * alert(element); });
 
 JavaScript中基本类型的传值都是值传递（传值by value）[值传递、引用传递、共享传递](https://segmentfault.com/a/1190000005794070)
 > #### 按共享传递 call by sharing
