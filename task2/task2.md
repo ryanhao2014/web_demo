@@ -49,3 +49,85 @@ JavaScript中基本类型的传值都是值传递（传值by value）[值传递�
 * `myNewObj[i] = cloneObject(src[i]); `
 * `return myNewObj; } `
 
+
+
+#### arguments and rest
+>	<script type="text/javascript">
+	   /*
+       定义一个计算圆面积的函数area_of_circle()，它有两个参数：
+        r: 表示圆的半径；
+        pi: 表示π的值，如果不传，则默认3.14*/
+function area_of_circle(r, pi) {
+if (arguments.length===1)//pi==undefined pi=null arguments.length===1
+return 3.14*r*r;
+else return pi*r*r;
+}
+// 测试:
+if (area_of_circle(2) === 12.56 && area_of_circle(2, 3.1416) === 12.5664) {
+    alert('测试通过');
+} else {
+    alert('测试失败');
+}
+	</script>
+  
+  ps. == 相等（不判断类型）  ===恒等
+  
+  rest编写一个任意数量参数和的函数sum
+> function sum(...rest) {
+var c=0;
+for(var i in rest){
+c+=rest[i];
+}
+return c;
+}
+
+#### [Tricky use case: map parseInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+>
+It is common to use the callback with one argument (the element being traversed). Certain functions are also commonly used with one argument, even though they take additional optional arguments. These habits may lead to confusing behaviors.
+// Consider:
+['1', '2', '3'].map(parseInt);
+// While one could expect [1, 2, 3]
+// The actual result is [1, NaN, NaN]
+// parseInt is often used with one argument, but takes two.
+// The first is an expression and the second is the radix.
+// To the callback function, Array.prototype.map passes 3 arguments: 
+// the element, the index, the array
+// The third argument is ignored by parseInt, but not the second one,
+// hence the possible confusion. See the blog post for more details
+function returnInt(element) {
+  return parseInt(element, 10);
+}
+['1', '2', '3'].map(returnInt); // [1, 2, 3]
+// Actual result is an array of numbers (as expected)
+// A simpler way to achieve the above, while avoiding the "gotcha":
+['1', '2', '3'].map(Number); // [1, 2, 3]
+
+
+#### sort()
+> // 看上去正常的结果:
+['Google', 'Apple', 'Microsoft'].sort(); // ['Apple', 'Google', 'Microsoft'];
+// apple排在了最后:
+['Google', 'apple', 'Microsoft'].sort(); // ['Google', 'Microsoft", 'apple']
+// 无法理解的结果:
+[10, 20, 1, 2].sort(); // [1, 10, 2, 20]
+第二个排序把apple排在了最后，是因为字符串根据ASCII码进行排序，而小写字母a的ASCII码在大写字母之后。
+//
+第三个排序结果是什么鬼？简单的数字排序都能错？
+//
+这是因为Array的sort()方法默认把所有元素先转换为String再排序，结果'10'排在了'2'的前面，因为字符'1'比字符'2'的ASCII码小。
+
+#### [闭包](http://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/00143449934543461c9d5dfeeb848f5b72bd012e1113d15000)
+> 但是，如果不需要立刻求和，而是在后面的代码中，根据需要再计算怎么办？可以不返回求和的结果，而是返回求和的函数！
+function lazy_sum(arr) {
+    var sum = function () {
+        return arr.reduce(function (x, y) {
+            return x + y;
+        });
+    }
+    return sum;
+}
+当我们调用lazy_sum()时，返回的并不是求和结果，而是求和函数：
+var f = lazy_sum([1, 2, 3, 4, 5]); // function sum()
+调用函数f时，才真正计算求和的结果：
+f(); // 15
+>在这个例子中，我们在函数lazy_sum中又定义了函数sum，并且，内部函数sum可以引用外部函数lazy_sum的参数和局部变量，当lazy_sum返回函数sum时，相关参数和变量都保存在返回的函数中，这种称为“闭包（Closure）”的程序结构拥有极大的威力。
